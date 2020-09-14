@@ -1,0 +1,185 @@
+package com.company;
+import java.util.Random;
+class Matrix {
+    int n; int m;
+    double [][] thisMatrix;
+
+    public Matrix(int n, int m){
+
+        this.thisMatrix = new double[n][m];
+        this.n = n;
+        this.m = m;
+        this.initialiser();
+    }
+    public Matrix(double[][] thisMatrix){
+
+        this.thisMatrix = thisMatrix;
+        this.n = thisMatrix.length;
+        this.m = thisMatrix[0].length;
+
+    }
+    private void initialiser(){
+        Random random = new Random();
+        for (int i=0; i<thisMatrix.length;i++){
+            for (int j=0;j<thisMatrix[i].length;j++){
+                thisMatrix[i][j]=random.nextInt(35);
+            }
+        }
+    }
+    public void getvalue(){
+        for (int i=0;i<thisMatrix.length;i++){
+            for (int j=0;j<thisMatrix[i].length;j++) {
+                System.out.println(thisMatrix[i][j]);
+            }
+            System.out.println("\n");
+        }
+    }
+    public Matrix numberMultiplication(double inputNumber){
+        double[][] resultMatrix = new double[this.n][this.m];
+
+        for (int i = 0; i < this.n; i++) {
+            for (int j = 0; j < this.m; j++) {
+                double result = this.thisMatrix[i][j] * inputNumber;
+                resultMatrix[i][j] = result;
+            }
+        }
+        return new Matrix(resultMatrix);
+    }
+}
+class MatrixExecuter{
+    Matrix matrix1;
+    Matrix matrix2;
+
+    public MatrixExecuter(Matrix obj1, Matrix obj2) {
+        this.matrix1 = obj1;
+        this.matrix2 = obj2;
+    }
+    public  Matrix multiplication() {
+        if ((matrix1.n != matrix2.n) || (matrix1.m != matrix2.m)){
+            System.out.println("Неправильная размерность матрицы");
+            return null;
+        }else {
+            double[][] resultMatrix = new double[matrix1.n][matrix1.m];
+            for (int i = 0; i < matrix1.n; i++) {
+                for (int j = 0; j < matrix1.m; j++) {
+                    double result = matrix1.thisMatrix[i][j] * matrix2.thisMatrix[i][j];
+                    resultMatrix[i][j] = result;
+                }
+            }
+            return  new Matrix(resultMatrix);
+        }
+    }
+    public Matrix summ() {
+        if ((matrix1.n != matrix2.n) || (matrix1.m != matrix2.m)) {
+            System.out.println("Неправильная размерность матрицы");
+            return null;
+        } else {
+
+            double[][] resultMatrix = new double[matrix1.n][matrix1.m];
+
+            for (int i = 0; i < matrix1.n; i++) {
+                for (int j = 0; j < matrix1.m; j++) {
+                    double result = matrix1.thisMatrix[i][j] + matrix2.thisMatrix[i][j];
+                    resultMatrix[i][j] = result;
+                }
+            }
+            return new Matrix(resultMatrix);
+        }
+    }
+    public Matrix difference() {
+        if ((matrix1.n != matrix2.n) || (matrix1.m != matrix2.m)) {
+            System.out.println("Неправильная размерность матрицы");
+            return null;
+        } else {
+
+            double[][] resultMatrix = new double[matrix1.n][matrix1.m];
+
+            for (int i = 0; i < matrix1.n; i++) {
+                for (int j = 0; j < matrix1.m; j++) {
+                    double result = matrix1.thisMatrix[i][j] - matrix2.thisMatrix[i][j];
+                    resultMatrix[i][j] = result;
+                }
+            }
+
+            return new Matrix(resultMatrix);
+        }
+    }
+    public  Matrix tramspon(){
+        if ((matrix1.n != matrix2.n) || (matrix1.m != matrix2.m)) {
+            System.out.println("Неправильная размерность матрицы");
+            return null;
+        } else{
+            double[][] resultMatrix = new double[matrix1.n][matrix1.m];
+
+            for (int i = 0; i < matrix1.n; i++){
+                for (int j = 0; j < matrix1.m; j++){
+                    double resoult = matrix1.thisMatrix[i][j];
+                    matrix1.thisMatrix[i][j] = matrix1.thisMatrix[j][i];
+                    matrix1.thisMatrix[j][i] = resoult;
+                    resultMatrix[i][j] = matrix1.thisMatrix[j][i];
+
+                }
+            }
+            return new Matrix(resultMatrix);
+
+        }
+    }
+    public Matrix square(){
+        if ((matrix1.n != matrix2.n) || (matrix1.m != matrix2.m)) {
+            System.out.println("Неправильная размерность матрицы");
+            return null;
+        } else {
+            double[][] resultMatrix = new double[matrix1.n][matrix1.m];
+            for (int i = 0; i < matrix1.n; i++){
+                for (int j = 0; j < matrix1.m; j++){
+                    for (int k = 0;k< matrix1.n;k++){
+                        double resoult = matrix1.thisMatrix[i][k]*matrix1.thisMatrix[k][j];
+                    }
+                }
+            }
+            return new Matrix(resultMatrix);
+        }
+    }
+}
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Matrix obj1 = new Matrix(3, 3);
+        Matrix obj2 = new Matrix(3, 3);
+        System.out.println("Матрица А:");
+        obj1.getvalue();
+        System.out.println("\nМатрица B:");
+        obj2.getvalue();
+
+        double multiNumber = 2;
+
+
+        MatrixExecuter executerObj = new MatrixExecuter(obj1, obj2);
+        System.out.println("\nСумма");
+        Matrix result = executerObj.summ();
+        result.getvalue();
+
+        System.out.println("\nРазность");
+        result = executerObj.difference();
+        result.getvalue();
+
+        System.out.println("\nУмножение матрицы А на число "+multiNumber);
+        Matrix matrixResult = obj1.numberMultiplication(multiNumber);
+        matrixResult.getvalue();
+
+        System.out.println("\nУмножение матрици A на матрицу B:");
+        result = executerObj.multiplication();
+        result.getvalue();
+
+        System.out.println("\nТранспонированная матрица");
+        result = executerObj.tramspon();
+        result.getvalue();
+
+        System.out.println("\nВозведение матрицы в степень");
+        result = executerObj.square();
+        result.getvalue();
+    }
+}
