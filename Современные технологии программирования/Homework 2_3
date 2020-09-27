@@ -1,0 +1,64 @@
+package com.company;
+
+
+
+class Shape {
+    private double volume;
+    public double getVolume() {
+        return this.volume;
+    }
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+}
+class Pyramid extends Shape {
+    private double s;
+    private double h;
+}
+class Box extends Shape {
+    public boolean add(Shape shape) {
+        if (this.getVolume() < shape.getVolume()) {
+            return false;
+        } else {
+            double freeSpace = this.getVolume() - shape.getVolume();
+            this.setVolume(freeSpace);
+            return true;
+        }
+    }
+}
+class demensionmoduling extends Shape {
+    private double radius;
+    public double getRadius() {
+        return radius;
+    }
+}
+class Cylinder extends demensionmoduling {
+    private double height;
+}
+class Ball extends demensionmoduling {
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box box = new Box();
+        box.setVolume(500);
+
+        Ball ball1 = new Ball();
+        ball1.setVolume(35);
+
+
+        System.out.println("\nОбъём коробки: " + box.getVolume());
+        boolean result = box.add(ball1);
+        System.out.println("Флаг: " + result);
+        System.out.println("Объём коробки: " + box.getVolume());
+        
+        demensionmoduling obj = new demensionmoduling();
+        obj.setVolume(465);
+        System.out.println("\nОбъём коробки: " + box.getVolume());
+        result = box.add(obj);
+        System.out.println("Флаг: " + result);
+        System.out.println("Объём коробки: " + box.getVolume());
+
+
+    }
+}
