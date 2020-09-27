@@ -1,0 +1,49 @@
+package com.company;
+import java.util.Scanner;
+
+class Comparator {
+    private int[] values;
+    private int[] weight;
+
+    Comparator(int[] values, int[] gravity){
+        this.values = values;
+        this.weight = gravity;
+    }
+
+    int getRandomNumber(){
+        int total = 0;
+        for (int o : weight) total += o;
+        int num = 1 + (int) (Math.random() * total);
+
+        int n = 0;
+        for (int i = 0; i < values.length; i++){
+            n += weight[i];
+
+            if (n >= num){
+                return values[i];
+            }
+        }
+
+        return -1;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число значений");
+        int n = scanner.nextInt();
+        int[] values = new int[n];
+        int[] weight = new int[n];
+
+        System.out.println("Заполните массив значений");
+        for (int i = 0; i< n; i++){
+            values[i] = scanner.nextInt();
+        }
+        System.out.println("Заполните массив весов");
+        for (int i = 0; i < n; i++){
+            weight[i] = scanner.nextInt();
+        }
+        Comparator comparator = new Comparator(values, weight);
+        System.out.println("Полученное значение: " + comparator.getRandomNumber());
+    }
+}
