@@ -1,6 +1,7 @@
 package sample.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.Person;
@@ -60,7 +61,12 @@ public class PersonEditDialog {
     @FXML
     private void handleOk(){
         if(isInputValid()){
-            //TODO: сеттеры Person
+            person.setFirstName(firstNameField.getText());
+            person.setLastName(lastNameField.getText());
+            person.setStreet(streetField.getText());
+            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setCity(cityField.getText());
+            person.setBirthday(DateUtil.parse(birthdayField.getText()));
 
             okClicked = true;
             dialogStage.close();
@@ -102,7 +108,10 @@ public class PersonEditDialog {
         if(errorMessage.length() == 0){
             return true;
         }else{
-            //TODO:ALERT
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(dialogStage);
+            alert.setTitle("Недопустимые Поля");
+            alert.setHeaderText("Пожалуйста, исправьте недопустимые поля");
             return false;
         }
     }

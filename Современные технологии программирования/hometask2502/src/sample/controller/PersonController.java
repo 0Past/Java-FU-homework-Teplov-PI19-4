@@ -64,8 +64,8 @@ public class PersonController {
     @FXML
     private void handleNewPerson(){
         Person tempPerson = new Person();
-        boolean isOkClicked = mainApp.showPersonEditDialog(tempPerson);
-        if(isOkClicked){
+        boolean OkClicked = mainApp.showPersonEditDialog(tempPerson);
+        if(OkClicked){
             mainApp.getPersonData().add(tempPerson);
         }
     }
@@ -73,6 +73,20 @@ public class PersonController {
     @FXML
     private void handleEditPerson(){
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null){
+            boolean OkClicked = mainApp.showPersonEditDialog(selectedPerson);
+            if(OkClicked){
+                showPersonDetails(selectedPerson);
+            }
+        }else{
+            Alert alert = new Alert((Alert.AlertType.WARNING));
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("ОШИБКА");
+            alert.setHeaderText("Пользователи не выбраны");
+            alert.setContentText("Пожалуйста выберите пользователя");
+
+            alert.showAndWait();
+        }
     }
 
     private void showPersonDetails(Person person){
