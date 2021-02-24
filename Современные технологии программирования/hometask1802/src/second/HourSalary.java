@@ -13,8 +13,13 @@ public class HourSalary extends Base {
         this.hourSalary = hourSalary;
 
     }
+
+    /**
+     * Метод для расчета ЗП сотрудника с почасовой ставкой
+     * @return ЗП, по формуле 20.8*8*часовую ставку
+     */
     @Override
     public double avarageSalary() {
-        return 20*8*8*hourSalary;
+        return 20.8*8*hourSalary;
     }
 }

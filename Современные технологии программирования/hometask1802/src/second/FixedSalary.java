@@ -16,6 +16,10 @@ public class FixedSalary extends Base {
         return fixedSalary;
     }
 
+    /**
+     * Метод для расчета ЗП сотрудника с фиксированной ставкой
+     * @return ЗП, равную ставке
+     */
     @Override
     public double avarageSalary() {
         return fixedSalary;

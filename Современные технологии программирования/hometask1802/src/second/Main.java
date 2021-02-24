@@ -17,12 +17,19 @@ public class Main {
                 return o1.getEmployeeName().compareTo(o2.getEmployeeName());
             return (int) (o2.avarageSalary() - o1.avarageSalary());
         });
+
+        /**
+         * Вывод id работника, имя и ЗП для всех элементов списка
+         */
         System.out.println("------ ID + NAME + SALARY ------");
         for (Base employee : employees) {
             System.out.println("[" + employee.getEmployeeID() + "]: " + employee.getEmployeeName() + " - " + String.format("%.2f", employee.avarageSalary()) + "$");
         }
         System.out.println();
 
+        /**
+         * Вывести 5 верхних имен из списка
+         */
         System.out.println("------ TOP 5 EMPLOYYES ------");
         for (int index = 0; index < 5; index++) {
             Base employee = employees.get(index);
@@ -30,6 +37,9 @@ public class Main {
         }
         System.out.println();
 
+        /**
+         * Вывести id последних 3-х сотрудников
+         */
         System.out.println("------ Last 3 ID ------");
         for (int index = employees.size() - 3; index < employees.size(); index++) {
             Base employee = employees.get(index);
