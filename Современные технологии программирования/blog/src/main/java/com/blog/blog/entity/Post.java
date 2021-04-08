@@ -26,7 +26,7 @@ public class Post {
     private User author;
 
     @ManyToMany
-    Set<Tag> tag_id;
+    private Set<Tag> tag_id;
 
     public void setId(Long id) {
         this.id = id;

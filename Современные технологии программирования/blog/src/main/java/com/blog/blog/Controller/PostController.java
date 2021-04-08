@@ -46,7 +46,7 @@ public class PostController {
     }
 
     @PutMapping(value = "/api/posts/{id}")
-    public ResponseEntity<?> updateBlog(@RequestBody Post post, @PathVariable(name = "id")Long id){
+    public ResponseEntity<?> updatePost(@RequestBody Post post, @PathVariable(name = "id")Long id){
         if (postService.findById(id).isPresent()) {
             postService.updatePost(post, id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -54,7 +54,7 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     @DeleteMapping(value = "/api/posts/{id}")
-    public ResponseEntity<?> deleteBlog(@PathVariable(name = "id") Long id){
+    public ResponseEntity<?> deletePost(@PathVariable(name = "id") Long id){
         if (postService.findById(id).isPresent()){
             postService.deletePost(id);
             return  new ResponseEntity<>(HttpStatus.OK);
