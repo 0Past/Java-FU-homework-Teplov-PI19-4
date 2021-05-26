@@ -48,6 +48,7 @@ public class ComController {
     public ResponseEntity<?> updateComment(@RequestBody Comment comment, @PathVariable(name = "id")Long id){
         if (comService.findById(id).isPresent()) {
             comService.updateComment(comment, id);
+
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

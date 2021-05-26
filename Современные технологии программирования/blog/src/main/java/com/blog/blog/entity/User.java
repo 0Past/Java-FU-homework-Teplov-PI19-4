@@ -28,6 +28,12 @@ public class User {
     @OneToMany(mappedBy = "author")
     private Set<Post> posts;
 
+    @OneToMany(mappedBy = "authorComment")
+    private Set<Comment> comments;
+
+    @ManyToMany(mappedBy = "likes")
+    private Set<Post> likes;
+
     public Long getId() {
         return id;
     }
@@ -74,5 +80,21 @@ public class User {
 
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public Set<Post> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<Post> likes) {
+        this.likes = likes;
     }
 }

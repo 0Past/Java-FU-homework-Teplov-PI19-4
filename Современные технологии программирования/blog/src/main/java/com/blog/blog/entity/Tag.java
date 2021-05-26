@@ -20,8 +20,13 @@ public class Tag {
     @Column(unique = true)
     private String slug;
 
-    @ManyToMany
-    private Set<Post> tags;
+    @ManyToMany(mappedBy = "tags")
+    private Set<Post> posts;
+
+    public Tag(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
+    }
 
     public Long getId() {
         return id;
@@ -47,11 +52,11 @@ public class Tag {
         this.slug = slug;
     }
 
-    public Set<Post> getTags() {
-        return tags;
+    public Set<Post> getPosts() {
+        return posts;
     }
 
-    public void setTags(Set<Post> tags) {
-        this.tags = tags;
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
     }
 }

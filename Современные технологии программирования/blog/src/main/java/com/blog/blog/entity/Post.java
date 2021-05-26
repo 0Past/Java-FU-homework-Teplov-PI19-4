@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.aspectj.apache.bcel.classfile.Module;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +27,14 @@ public class Post {
     private User author;
 
     @ManyToMany
-    private Set<Tag> tag_id;
+    @JoinTable(
+            name = "posts_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
+
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
 
     public void setId(Long id) {
         this.id = id;
@@ -68,11 +76,19 @@ public class Post {
         return title;
     }
 
-    public void setTag_id(Set<Tag> tag_id) {
-        this.tag_id = tag_id;
+    public Set<Tag> getTags() {
+        return tags;
     }
 
-    public Set<Tag> getTag_id() {
-        return tag_id;
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

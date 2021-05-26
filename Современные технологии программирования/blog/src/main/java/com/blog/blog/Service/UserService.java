@@ -2,7 +2,10 @@ package com.blog.blog.Service;
 
 
 import com.blog.blog.Repository.UserRepository;
+import com.blog.blog.entity.EnterEntity;
 import com.blog.blog.entity.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +47,21 @@ public class UserService {
 
     public void deleteAll(){
         userRepository.deleteAll();
+    }
+
+    public String entUser(EnterEntity enterEntity) {
+        Optional<User> bufResult = UserRepository.findByEmailAndPassword(enterEntity.getEmail(), enterEntity.getPassword());
+        if (bufResult.isPresent()) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                String jsonString = objectMapper.writeValueAsString(bufResult.get());
+                return jsonString;
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
     }
 
 }

@@ -13,11 +13,15 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User authorComment;
 
-    @Column(unique = true)
-    private String post_id;
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
+    private Post post;
+
+    private String text;
 
     public Long getId() {
         return id;
@@ -27,19 +31,27 @@ public class Comment {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return author;
+    public User getAuthorComment() {
+        return authorComment;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthorComment(User authorComment) {
+        this.authorComment = authorComment;
     }
 
-    public String getPost_id() {
-        return post_id;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPost_id(String post_id) {
-        this.post_id = post_id;
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

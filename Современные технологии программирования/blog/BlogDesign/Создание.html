@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<html style="font-size: 16px;">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Создание поста</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Блог.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Blog",
+        "url": "index.html",
+        "logo": "images/Mihav2z3-qs.jpg"}</script>
+    <meta property="og:title" content="Блог">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+</head>
+
+<body>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" href="#">RealBlog</a>
+        <button class="navbar-toggler" data-target="#navcol-1" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-3-light-1 u-text-hover-palette-3-base u-text-black" href="Регистрация.html" style="padding: 10px 20px;">Регистрация</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-3-light-1 u-text-hover-palette-3-base u-text-black" href="Авторизация.html" style="padding: 10px 20px;">Авторизация</a>
+            </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-3-light-1 u-text-hover-palette-3-base u-text-black" href="Блог.html" style="padding: 10px 20px;">Блог</a>
+            </li></ul>
+            <div aria-labelledby="blogDropdownMenuLink" class="dropdown-menu">
+                <a class="u-nav-item" class="u-button-style u-nav-link u-text-active-palette-3-light-1 u-text-hover-palette-3-base u-text-black" href="../blogs/Создание.html" style="padding: 10px 20px;">Создание</a>
+            </div>
+            </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<main class="page login-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Добавление нового поста</h2>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label for="post-title">Заголовок</label>
+                    <input class="form-control item" id="post-title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="post-slug">Slug</label>
+                    <input class="form-control" id="post-slug" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="post-author">Автор</label>
+                    <select class="form-control" id="post-author" name="post-author" required="">
+                        <option disabled="" selected="" value="">Выберите автора</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-tags">Теги</label>
+                    <select class="form-control" id="post-tags" name="post-tags" required="">
+                        <option disabled="" selected="" value="">Выберите теги</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-text">Текст</label>
+                    <textarea class="form-control" id="post-text" name="post-text" required="">
+                    </textarea>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="tag-create-button">Добавить</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="page-footer u-active-color-1-light-1">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<script src="../assets/js/post.js"></script>
+<script src="../assets/js/tags.js"></script>
+</body>
+
+</html>
