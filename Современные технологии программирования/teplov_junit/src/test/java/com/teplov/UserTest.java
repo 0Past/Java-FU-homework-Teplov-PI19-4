@@ -33,7 +33,6 @@ public class UserTest {
 
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void getAllUsers_NO_NULL() {
         List<User> expected = User.getAllUsers();
