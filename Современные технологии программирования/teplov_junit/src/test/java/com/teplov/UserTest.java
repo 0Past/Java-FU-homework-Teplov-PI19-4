@@ -70,7 +70,6 @@ public class UserTest {
 
     @Test
     public void getAllUsers_FEMALE_NO_NULL() {
-        //добавим проверку на null
         List<User> expected = User.getAllUsers(Gender.FEMALE);
         Assert.assertNotNull(expected);
     }
